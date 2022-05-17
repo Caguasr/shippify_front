@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {WelcomePage} from "./views";
+import VehiclesState from "./context/VehiclesContext/VehiclesState";
+import {ThemeProvider} from "@mui/material/styles";
+import {theme} from "./theme";
+import {SnackbarProvider} from "notistack";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <SnackbarProvider maxSnack={3} anchorOrigin={{vertical:'top', horizontal:'right'}}>
+            <ThemeProvider theme={theme}>
+                <VehiclesState>
+                    <WelcomePage/>
+                </VehiclesState>
+            </ThemeProvider>
+        </SnackbarProvider>
+    );
 }
 
 export default App;
